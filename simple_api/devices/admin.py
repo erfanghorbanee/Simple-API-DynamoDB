@@ -1,3 +1,12 @@
 from django.contrib import admin
+from .models import Device, DeviceModel
 
-# Register your models here.
+
+@admin.register(Device)
+class DeviceAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(DeviceModel)
+class DeviceModelAdmin(admin.ModelAdmin):
+    pass
