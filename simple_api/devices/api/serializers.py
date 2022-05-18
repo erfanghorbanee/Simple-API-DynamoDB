@@ -48,14 +48,14 @@ class DeviceCreateSerializer(ModelSerializer):
 
 class DeviceDetailSerializer(ModelSerializer):
     id = serializers.SerializerMethodField()
-    deviceModel = serializers.SerializerMethodField(read_only=True)
+    deviceModel = serializers.SerializerMethodField()
 
     class Meta:
         model = Device
         fields = ("id", "deviceModel", "name", "note", "serial")
 
     def get_id(self, obj):
-        return f"/devicemodels/id{obj.id}"
+        return f"/devices/id{obj.id}"
 
     def get_deviceModel(self, obj):
         return f"/devicemodels/id{obj.deviceModel.id}"
