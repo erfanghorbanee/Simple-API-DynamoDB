@@ -1,5 +1,5 @@
 from rest_framework import status
-from rest_framework.generics import CreateAPIView
+from rest_framework.generics import CreateAPIView, RetrieveAPIView
 from rest_framework.response import Response
 
 from devices.models import Device, DeviceModel
@@ -23,3 +23,14 @@ class DeviceCreateAPI(CreateAPIView):
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
         return Response(status=status.HTTP_201_CREATED, headers=headers)
+
+
+class DeviceDetailAPI(RetrieveAPIView):
+    """
+    A simple api which allows clients to get an instance of Device model using its id.
+    """
+
+    # permission_classes = (IsAuthenticated,)
+
+    queryset = Device.objects.all()
+    serializer_class = DeviceDetailSerializer
