@@ -47,7 +47,7 @@ Default region name [None]: MYREGION
 ```
 
 ####  Run dynamodb migrator :
-You can find it at Simple-API/simple_api/ directory inside the project.\
+You can find it at Simple-API/simple_api/dynamodb_migrator.py directory inside the project.\
 this is similar to usual makemigrations command that we run all the time, it creates the table we want for this project.\
 feel free to change it the way you need.
 
