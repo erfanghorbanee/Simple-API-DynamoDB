@@ -46,15 +46,15 @@ Default region name [None]: MYREGION
 ```
 
 ####  Run dynamodb migrator :
-you can find it at Simple-API/simple_api/ directory inside the project.
-this is similar to usual makemigrations command that we run all the time, it creates the table we want for this project.
+You can find it at Simple-API/simple_api/ directory inside the project.\
+this is similar to usual makemigrations command that we run all the time, it creates the table we want for this project.\
 feel free to change it the way you need.
 
 ```bash
 python dynamodb_migrator.py
 ```
 
-check if your table is created successfully using this command:
+Check if your table is created successfully using this command :
 ```
 aws dynamodb list-tables
 ```
@@ -68,4 +68,13 @@ python3 manage.py test
 ```bash
 python manage.py runserver
 ```
+
+## Frequently Asked Questions
+### Question 1
+Is there any advantage of using integer hash key over string hash key?
+### Answer
+Serialized numbers are sent to Amazon DynamoDB as String types, which maximizes compatibility across languages and libraries, 
+so there shouldn't be any advantage of using an integer hash key over a string hash key.
+
+
 
