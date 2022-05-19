@@ -1,36 +1,42 @@
 from rest_framework import status
-from rest_framework.generics import CreateAPIView, RetrieveAPIView
 from rest_framework.response import Response
+from rest_framework.views import APIView
 
-from devices.models import Device, DeviceModel
+from devices.models import Devices
 
-from .serializers import DeviceCreateSerializer, DeviceDetailSerializer
+from .serializers import DeviceSerializer
 
 
-class DeviceCreateAPI(CreateAPIView):
+class DeviceCreateAPI(APIView):
     """
     A simple api which allows clients to create new instance of Device model.
     """
 
-    # permission_classes = (IsAuthenticated,)
+    def post(self, request):
+        serializer = DeviceSerializer(data=request.data)
 
-    queryset = Device.objects.all()
-    serializer_class = DeviceCreateSerializer
+        if serializer.is_valid():
+            data = serializer.validated_data
 
-    def create(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        self.perform_create(serializer)
-        headers = self.get_success_headers(serializer.data)
-        return Response(status=status.HTTP_201_CREATED, headers=headers)
+            device = Devices(**data)
+            device.save()
+
+            return Response(status=status.HTTP_201_CREATED)
+
+        else:
+            return Response(status=status.HTTP_400_BAD_REQUEST, data=serializer.errors)
 
 
-class DeviceDetailAPI(RetrieveAPIView):
+class DeviceDetailAPI(APIView):
     """
     A simple api which allows clients to get an instance of Device model using its id.
     """
 
-    # permission_classes = (IsAuthenticated,)
+    def get(self, request, pk):
+        device = Devices.get(id=f"/devices/{pk}")
 
-    queryset = Device.objects.all()
-    serializer_class = DeviceDetailSerializer
+        if device:
+            serializer = DeviceSerializer(device)
+            return Response(status=status.HTTP_200_OK, data=serializer.data)
+        else:
+            return Response(status=status.HTTP_404_NOT_FOUND)
