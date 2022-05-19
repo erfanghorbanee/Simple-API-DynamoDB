@@ -10,7 +10,6 @@ class DeviceSerializer(Serializer):
     serial = serializers.CharField(max_length=50, allow_null=False)
 
     def validate_id(self, value):
-        print(1)
         id = value.replace("/devices/id", "")
 
         if not id.isdigit():
@@ -21,10 +20,9 @@ class DeviceSerializer(Serializer):
         return value
 
     def validate_deviceModel(self, value):
-        print(2)
-        deviceModel = value.replace("/devicemodels/id", "")
+        device_model = value.replace("/devicemodels/id", "")
 
-        if not deviceModel.isdigit():
+        if not device_model.isdigit():
             raise serializers.ValidationError(
                 "deviceModel field must be in this format /devicemodels/id1"
             )
