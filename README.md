@@ -18,25 +18,45 @@ $ cd Simple-API
 
 #### Create a virtualenv and activate it:
  ```bash
-$ python3 -m venv venv
+$ python -m venv venv
 $ . venv/bin/activate
 ```
 
 #### Or on Windows cmd : 
  ```bash
-> py -3 -m venv venv
-> venv\Scripts\activate.bat
+py -3 -m venv venv
+venv\Scripts\activate.bat
 ```
 
 #### Install the requirements :
 ```bash
-$ pip3 install -r requirements.txt
+pip install -r requirements.txt
 ```
 
-####  Run makemigrations and migrate :
+#### Configure your aws credentials :
+```
+aws configure
+```
+
+now enter your credentials and you're good to go!
+```
+AWS Access Key ID [None]: MYACCESSKEY
+AWS Secret Access Key [None]: MYSECRETKEY/K7MDENG/bPxRfiCYEXAMPLEKEY
+Default region name [None]: MYREGION
+```
+
+####  Run dynamodb migrator :
+you can find it at Simple-API/simple_api/ directory inside the project.
+this is similar to usual makemigrations command that we run all the time, it creates the table we want for this project.
+feel free to change it the way you need.
+
 ```bash
-python3 manage.py makemigrations
-python3 manage.py migrate
+python dynamodb_migrator.py
+```
+
+check if your table is created successfully using this command:
+```
+aws dynamodb list-tables
 ```
 
 #### Run the tests :
@@ -44,11 +64,8 @@ python3 manage.py migrate
 python3 manage.py test
 ```
 
-![image](https://user-images.githubusercontent.com/49264993/169146251-ebef4c57-8e4b-49a1-8717-8716b390de5d.png)
-
-
 #### Run the development server :
 ```bash
-python3 manage.py runserver
+python manage.py runserver
 ```
 
