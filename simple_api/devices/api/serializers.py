@@ -1,61 +1,32 @@
 from rest_framework import serializers
-from rest_framework.serializers import ModelSerializer
-
-from devices.models import Device, DeviceModel
+from rest_framework.serializers import Serializer
 
 
-class DeviceCreateSerializer(ModelSerializer):
+class DeviceSerializer(Serializer):
     id = serializers.CharField(max_length=50, allow_null=False)
     deviceModel = serializers.CharField(max_length=50, allow_null=False)
-
-    class Meta:
-        model = Device
-        fields = ("id", "deviceModel", "name", "note", "serial")
+    name = serializers.CharField(max_length=100, allow_null=False)
+    note = serializers.CharField(max_length=1000, allow_null=False)
+    serial = serializers.CharField(max_length=50, allow_null=False)
 
     def validate_id(self, value):
+        print(1)
         id = value.replace("/devices/id", "")
 
         if not id.isdigit():
             raise serializers.ValidationError(
-                "id field must be eithrt in this format: /devices/id1 or just a number"
+                "id field must be in this format: /devices/id1"
             )
-        else:
-            id = int(id)
 
-        if Device.objects.only("id").filter(id=id).exists():
-            raise serializers.ValidationError("Device with this id already exists!")
-
-        return id
+        return value
 
     def validate_deviceModel(self, value):
+        print(2)
         deviceModel = value.replace("/devicemodels/id", "")
 
         if not deviceModel.isdigit():
             raise serializers.ValidationError(
-                "deviceModel field must be either in this format /devicemodels/id1 or just a number"
-            )
-        else:
-            deviceModel = int(deviceModel)
-            qs = DeviceModel.objects.only("id").filter(id=deviceModel)
-
-        if not qs.exists():
-            raise serializers.ValidationError(
-                "deviceModel with this id doest not exist!"
+                "deviceModel field must be in this format /devicemodels/id1"
             )
 
-        return qs.first()
-
-
-class DeviceDetailSerializer(ModelSerializer):
-    id = serializers.SerializerMethodField()
-    deviceModel = serializers.SerializerMethodField()
-
-    class Meta:
-        model = Device
-        fields = ("id", "deviceModel", "name", "note", "serial")
-
-    def get_id(self, obj):
-        return f"/devices/id{obj.id}"
-
-    def get_deviceModel(self, obj):
-        return f"/devicemodels/id{obj.deviceModel.id}"
+        return value
