@@ -1,22 +1,17 @@
-from django.db import models
+from dynamorm import DynaModel
+from marshmallow import fields
 
 
-# Create your models here.
-class Device(models.Model):
-    id = models.IntegerField(primary_key=True)
-    deviceModel = models.ForeignKey(
-        "DeviceModel", on_delete=models.CASCADE, related_name="devices"
-    )
-    name = models.CharField(max_length=200, unique=True)
-    note = models.TextField(max_length=5000)
-    serial = models.CharField(max_length=200, unique=True)
+class Devices(DynaModel):
+    class Table:
+        name = "Devices"
+        hash_key = "id"
+        read = 25
+        write = 5
 
-    def __str__(self):
-        return self.name
-
-
-class DeviceModel(models.Model):
-    name = models.CharField(max_length=200, unique=True)
-
-    def __str__(self):
-        return self.name
+    class Schema:
+        id = fields.String()
+        deviceModel = fields.String()
+        name = fields.String()
+        note = fields.String()
+        serial = fields.String()
