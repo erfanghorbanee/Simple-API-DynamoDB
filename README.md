@@ -42,7 +42,7 @@ aws configure
 now enter your credentials and you're good to go!
 ```
 AWS Access Key ID [None]: MYACCESSKEY
-AWS Secret Access Key [None]: MYSECRETKEY/K7MDENG/bPxRfiCYEXAMPLEKEY
+AWS Secret Access Key [None]: MYSECRETKEY
 Default region name [None]: MYREGION
 ```
 
