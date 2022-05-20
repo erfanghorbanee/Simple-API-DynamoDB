@@ -13,7 +13,7 @@
 
 #### Clone the repository :
 ```bash
-$ git clone https://github.com/erfanghorbanee/Simple-API.git
+$ git clone https://github.com/erfanghorbanee/Simple-API-DynamoDB.git
 $ cd Simple-API
 ```
 
