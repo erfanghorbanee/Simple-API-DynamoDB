@@ -76,7 +76,7 @@ to learn more, you can check this [article](https://dontrepeatyourself.org/post/
 
 #### Run the tests :
 ```bash
-python3 manage.py test
+python manage.py test
 ```
 
 #### Run the development server :
