@@ -84,6 +84,46 @@ python manage.py test
 python manage.py runserver
 ```
 
+## Final Result
+We have two api/
+one for creating an instance in dynamo db
+and another one for getting it.
+
+### Request 1:
+```
+HTTP POST
+URL: http://127.0.0.1:8000/api/v1/devices/
+Body (application/json):
+{
+"id": "/devices/id1",
+"deviceModel": "/devicemodels/id1",
+"name": "Sensor",
+"note": "Testing a sensor.",
+"serial": "A020000102"
+}
+```
+### Response 1 - Success:
+![image](https://user-images.githubusercontent.com/49264993/169469128-8192329f-2073-4b3b-86a5-41bd0f1abc4d.png)
+
+### Response 1 - Failure 1:
+![image](https://user-images.githubusercontent.com/49264993/169469325-c63fca76-3692-4e50-a459-c38cf1fd24e9.png)
+
+<hr>
+
+### Request 2:
+```
+HTTP GET
+URL: http://127.0.0.1:8000/api/v1/devices/id1/
+Example: GET https://api123.amazonaws.com/api/devices/id1
+```
+
+### Response 2 - Success:
+![image](https://user-images.githubusercontent.com/49264993/169470647-37b223cc-5cbf-40b9-a0ce-6465413f2f7e.png)
+
+### Response 2 - Failure 1:
+![image](https://user-images.githubusercontent.com/49264993/169471253-7629e908-a21d-4a01-8550-6507911b4642.png)
+
+
 ## Frequently Asked Questions
 ### Question 1
 Is there any advantage of using integer hash key over string hash key?
