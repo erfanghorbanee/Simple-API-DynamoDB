@@ -139,5 +139,21 @@ Is there any advantage of using integer hash key over string hash key?
 Serialized numbers are sent to Amazon DynamoDB as String types, which maximizes compatibility across languages and libraries, 
 so there shouldn't be any advantage of using an integer hash key over a string hash key.
 
+### Question 2
+How can i deploy this on AWS Lambda?
+### Answer
+Use the following commands in order:
+```
+$ pip install zappa
+$ zappa init
+$ zappa deploy
+```
+
+for more information, check out this links:
+[Zappa repository](https://github.com/zappa/Zappa)
+[Django deploy - Zappa onto AWS Lambda + API Gateway](https://www.youtube.com/watch?v=WaiL4sbaj_o)
+
+
+
 
 
