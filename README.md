@@ -17,7 +17,7 @@ $ git clone https://github.com/erfanghorbanee/Simple-API.git
 $ cd Simple-API
 ```
 
-#### Create a virtualenv and activate it:
+#### Create a virtualenv and activate it :
  ```bash
 $ python -m venv venv
 $ . venv/bin/activate
@@ -65,7 +65,7 @@ aws dynamodb list-tables
 #### Config your secret variables!
 As you might know, it's not secure put important variables such as SECRET_KEY directly in the code,\
 so instead in the Simple-API/simple_api/ directory create a .env file,\
-this will be where we put our variables and fetch it in settings.py using  Python Decouple\
+this will be where we put our variables and fetch it in settings.py using  Python Decouple
 
 ```
 SECRET_KEY='MYSECRETKEY'
