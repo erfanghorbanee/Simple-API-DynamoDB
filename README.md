@@ -25,12 +25,14 @@ $ . venv/bin/activate
 
 #### Or on Windows cmd : 
  ```bash
-py -3 -m venv venv
+python -m venv venv
 venv\Scripts\activate.bat
 ```
 
 #### Install the requirements :
 ```bash
+cd simple_api/
+
 pip install -r requirements.txt
 ```
 
@@ -59,6 +61,17 @@ Check if your table is created successfully using this command :
 ```
 aws dynamodb list-tables
 ```
+
+#### Config your secret variables!
+In the Simple-API/simple_api/ directory create a .env file,\
+this will be where we put put our important secret variables and fetch it using  Python Decouple\
+
+```
+SECRET_KEY='MYSECRETKEY'
+DEBUG=True
+```
+
+to learn more, you can check this [article](https://dontrepeatyourself.org/post/how-to-use-python-decouple-with-django/).
 
 #### Run the tests :
 ```bash
