@@ -63,8 +63,9 @@ aws dynamodb list-tables
 ```
 
 #### Config your secret variables!
-In the Simple-API/simple_api/ directory create a .env file,\
-this will be where we put put our important secret variables and fetch it using  Python Decouple\
+As you might know, it's not secure put important variables such as SECRET_KEY directly in the code,\
+so instead in the Simple-API/simple_api/ directory create a .env file,\
+this will be where we put our variables and fetch it in settings.py using  Python Decouple\
 
 ```
 SECRET_KEY='MYSECRETKEY'
