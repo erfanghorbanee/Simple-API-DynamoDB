@@ -85,8 +85,8 @@ python manage.py runserver
 ```
 
 ## Final Result
-We have two api/
-one for creating an instance in dynamo db
+We have two api at the moment \
+one for creating an instance in dynamo db, \
 and another one for getting it.
 
 ### Request 1:
@@ -106,6 +106,8 @@ Body (application/json):
 ![image](https://user-images.githubusercontent.com/49264993/169469128-8192329f-2073-4b3b-86a5-41bd0f1abc4d.png)
 
 ### Response 1 - Failure 1:
+If any of the payload fields are missing:
+
 ![image](https://user-images.githubusercontent.com/49264993/169469325-c63fca76-3692-4e50-a459-c38cf1fd24e9.png)
 
 <hr>
@@ -122,6 +124,12 @@ Example: GET https://api123.amazonaws.com/api/devices/id1
 
 ### Response 2 - Failure 1:
 ![image](https://user-images.githubusercontent.com/49264993/169471253-7629e908-a21d-4a01-8550-6507911b4642.png)
+
+
+**NOTE: YOU CAN CHECK YOUR TABLES AND SEE IF THE INSTANCES WERE CREATED SUCCECFULLY:**
+```
+aws dynamodb scan --table-name Devices
+```
 
 
 ## Frequently Asked Questions
