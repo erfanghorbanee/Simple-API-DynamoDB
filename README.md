@@ -1,4 +1,4 @@
-# Simple-API
+# Simple-API-DynamoDB
 
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
@@ -7,6 +7,10 @@
 
  A simple Restful API on Django using the following tech stack: Python - Django - AWS DynamoDB
 
+# Table of Contents
+* [How run the project?](#how-run-the-project)
+* [Final Result](#final-result)
+* [Frequently Asked Questions](#frequently-asked-questions)
 
 ## How run the project?
 
@@ -94,6 +98,8 @@ and another one for getting it.
 HTTP POST
 URL: http://127.0.0.1:8000/api/v1/devices/
 Body (application/json):
+```
+```json
 {
 "id": "/devices/id1",
 "deviceModel": "/devicemodels/id1",
