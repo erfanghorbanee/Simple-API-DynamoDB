@@ -149,8 +149,8 @@ $ zappa init
 $ zappa deploy
 ```
 
-for more information, check out this links:
-[Zappa repository](https://github.com/zappa/Zappa)
+for more information, check out this links: \
+[Zappa repository](https://github.com/zappa/Zappa) \
 [Django deploy - Zappa onto AWS Lambda + API Gateway](https://www.youtube.com/watch?v=WaiL4sbaj_o)
 
 
