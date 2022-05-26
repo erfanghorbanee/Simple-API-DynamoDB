@@ -15,32 +15,32 @@
 ## How run the project?
 
 
-#### Clone the repository :
+### Clone the repository :
 ```bash
 $ git clone https://github.com/erfanghorbanee/Simple-API-DynamoDB.git
 $ cd Simple-API
 ```
 
-#### Create a virtualenv and activate it :
+### Create a virtualenv and activate it :
  ```bash
 $ python -m venv venv
 $ . venv/bin/activate
 ```
 
-#### Or on Windows cmd : 
+### Or on Windows cmd : 
  ```bash
 python -m venv venv
 venv\Scripts\activate.bat
 ```
 
-#### Install the requirements :
+### Install the requirements :
 ```bash
 cd simple_api/
 
 pip install -r requirements.txt
 ```
 
-#### Configure your aws credentials :
+### Configure your aws credentials :
 ```
 aws configure
 ```
@@ -52,7 +52,7 @@ AWS Secret Access Key [None]: MYSECRETKEY
 Default region name [None]: MYREGION
 ```
 
-####  Run dynamodb migrator :
+###  Run dynamodb migrator :
 You can find it at Simple-API/simple_api/dynamodb_migrator.py directory inside the project.\
 this is similar to usual makemigrations command that we run all the time, it creates the table we want for this project.\
 feel free to change it the way you need.
@@ -66,7 +66,8 @@ Check if your table is created successfully using this command :
 aws dynamodb list-tables
 ```
 
-#### Config your secret variables!
+### Config your secret variables!
+#### Local
 As you might know, it's not secure to put important variables such as SECRET_KEY directly in the code,\
 so instead in the Simple-API/simple_api/ directory create a .env file,\
 this will be where we put our variables and fetch it in settings.py using  Python Decouple
@@ -78,12 +79,26 @@ DEBUG=True
 
 to learn more, you can check this [article](https://dontrepeatyourself.org/post/how-to-use-python-decouple-with-django/).
 
-#### Run the tests :
+#### Production
+In this project, i used zappa to deploy on aws lambda. therefor i have a [zappa_settings.json](https://github.com/erfanghorbanee/Simple-API-DynamoDB/blob/main/simple_api/zappa_settings.json) file and i'm gonna store my environment variables in it!
+
+```json
+"environment_variables":{
+   "AWS_ACCESS_KEY_ID":"",
+   "AWS_SECRET_ACCESS_KEY":"",
+   "AWS_STORAGE_BUCKET_NAME":"",
+   "AWS_S3_CUSTOM_DOMAIN":"",
+   "SECRET_KEY":""
+}
+```
+
+
+### Run the tests :
 ```bash
 python manage.py test
 ```
 
-#### Run the development server :
+### Run the development server :
 ```bash
 python manage.py runserver
 ```
