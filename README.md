@@ -67,7 +67,7 @@ aws dynamodb list-tables
 ```
 
 ### Config your secret variables!
-#### Local
+#### Local:
 As you might know, it's not secure to put important variables such as SECRET_KEY directly in the code,\
 so instead in the Simple-API/simple_api/ directory create a .env file,\
 this will be where we put our variables and fetch it in settings.py using  Python Decouple
@@ -79,7 +79,7 @@ DEBUG=True
 
 to learn more, you can check this [article](https://dontrepeatyourself.org/post/how-to-use-python-decouple-with-django/).
 
-#### Production
+#### Production:
 In this project, i used zappa to deploy on aws lambda. therefor i have a [zappa_settings.json](https://github.com/erfanghorbanee/Simple-API-DynamoDB/blob/main/simple_api/zappa_settings.json) file and i'm gonna store my environment variables in it!
 
 ```json
@@ -92,15 +92,26 @@ In this project, i used zappa to deploy on aws lambda. therefor i have a [zappa_
 }
 ```
 
+### Run the development server :
+```bash
+python manage.py runserver
+```
+**NOTE: Make sure to configure settings.py the way you see fit before running this command.** \
+**NOTE 2: Enter your own aws credentials in [devices/api/views.py](https://github.com/erfanghorbanee/Simple-API-DynamoDB/blob/main/simple_api/devices/api/views.py) to connect to your dynamodb :**
+```python
+# Get the service resource.
+dynamodb = boto3.resource(
+    "dynamodb",
+    aws_access_key_id="MYACCESSKEY",
+    aws_secret_access_key="MYSECRETKEY",
+    region_name="MYREGION",
+)
+table = dynamodb.Table("Devices")
+```
 
 ### Run the tests :
 ```bash
 python manage.py test
-```
-
-### Run the development server :
-```bash
-python manage.py runserver
 ```
 
 ## Final Result
@@ -170,9 +181,11 @@ $ zappa init
 $ zappa deploy
 ```
 
-for more information, check out this links: \
-[Zappa repository](https://github.com/zappa/Zappa) \
-[Django deploy - Zappa onto AWS Lambda + API Gateway](https://www.youtube.com/watch?v=WaiL4sbaj_o)
+for more information, check out this links:
+- [Zappa repository](https://github.com/zappa/Zappa)
+- [Django deploy - Zappa onto AWS Lambda + API Gateway](https://www.youtube.com/watch?v=WaiL4sbaj_o)
+- [Django | Configure AWS S3 for Static Storage](https://www.youtube.com/watch?v=-dqpL3aY5e4)
+- [Serverless Deployment of a Django Project with AWS Lambda, Zappa, S3 and PostgreSQL](https://www.youtube.com/watch?v=Gf0vpJQZeBI)
 
 
 
