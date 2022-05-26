@@ -80,7 +80,7 @@ DEBUG=True
 to learn more, you can check this [article](https://dontrepeatyourself.org/post/how-to-use-python-decouple-with-django/).
 
 #### Production:
-In this project, i used zappa to deploy on aws lambda. therefor i have a [zappa_settings.json](https://github.com/erfanghorbanee/Simple-API-DynamoDB/blob/main/simple_api/zappa_settings.json) file and i'm gonna store my environment variables in it!
+In this project, i used zappa to deploy on aws lambda. therefore i have a [zappa_settings.json](https://github.com/erfanghorbanee/Simple-API-DynamoDB/blob/main/simple_api/zappa_settings.json) file and i'm gonna store my environment variables in it!
 
 ```json
 "environment_variables":{
