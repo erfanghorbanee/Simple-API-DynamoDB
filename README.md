@@ -5,7 +5,8 @@
 [![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-A simple Restful API on Django using the following tech stacks: Python - Django - AWS DynamoDB - S3
+A simple server-less Restful API on Django using the following tech stacks: Python - Django - AWS DynamoDB - S3 \
+Ready to deply on AWS Lambda using [Zappa](https://github.com/zappa/Zappa).
 
 # Table of Contents
 * [How run the project?](#how-run-the-project)
@@ -18,7 +19,7 @@ A simple Restful API on Django using the following tech stacks: Python - Django 
 ### Clone the repository :
 ```bash
 $ git clone https://github.com/erfanghorbanee/Simple-API-DynamoDB.git
-$ cd Simple-API
+$ cd Simple-API-DynamoDB
 ```
 
 ### Create a virtualenv and activate it :
@@ -182,7 +183,6 @@ $ zappa deploy
 ```
 
 for more information, check out this links:
-- [Zappa repository](https://github.com/zappa/Zappa)
 - [Django deploy - Zappa onto AWS Lambda + API Gateway](https://www.youtube.com/watch?v=WaiL4sbaj_o)
 - [Django | Configure AWS S3 for Static Storage](https://www.youtube.com/watch?v=-dqpL3aY5e4)
 - [Serverless Deployment of a Django Project with AWS Lambda, Zappa, S3 and PostgreSQL](https://www.youtube.com/watch?v=Gf0vpJQZeBI)
