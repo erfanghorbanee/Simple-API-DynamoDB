@@ -7,4 +7,4 @@ dynamorm==0.11.0
 isort==5.10.1
 marshmallow==3.15.0
 zappa==0.54.1
-django-storages
+django-storages==1.12.3
