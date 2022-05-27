@@ -171,8 +171,7 @@ Example: GET https://api123.amazonaws.com/api/devices/id1
 
 
 **NOTE: YOU CAN CHECK YOUR TABLES AND SEE IF THE INSTANCES WERE CREATED SUCCECFULLY:**
-```
-bash
+```bash
 aws dynamodb scan --table-name Devices
 ```
 
