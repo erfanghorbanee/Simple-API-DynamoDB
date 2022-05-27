@@ -18,7 +18,7 @@ A simple Restful API on Django using the following tech stacks: Python - Django 
 ### Clone the repository :
 ```bash
 $ git clone https://github.com/erfanghorbanee/Simple-API-DynamoDB.git
-$ cd Simple-API
+$ cd Simple-API-DynamoDB
 ```
 
 ### Create a virtualenv and activate it :
