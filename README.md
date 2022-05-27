@@ -42,12 +42,12 @@ pip install -r requirements.txt
 ```
 
 ### Configure your aws credentials :
-```
+```bash
 aws configure
 ```
 
 now enter your credentials and you're good to go!
-```
+```bash
 AWS Access Key ID [None]: MYACCESSKEY
 AWS Secret Access Key [None]: MYSECRETKEY
 Default region name [None]: MYREGION
@@ -64,7 +64,7 @@ python dynamodb_migrator.py
 ```
 
 Check if your table is created successfully using this command :
-```
+```bash
 aws dynamodb list-tables
 ```
 
@@ -96,8 +96,9 @@ In this project, i used zappa to deploy on aws lambda. therefore i have a [zappa
 ```
 
 ### Run the development server :
-This code is for production, so you have to make a few changes before running it on local server. \
-**NOTE: Make sure to configure [settings.py](https://github.com/erfanghorbanee/Simple-API-DynamoDB/blob/main/simple_api/config/settings.py) properly:**
+This code is for production, so you have to make a few changes before running it on local server.
+
+**NOTE: Make sure to configure [settings.py](https://github.com/erfanghorbanee/Simple-API-DynamoDB/blob/main/simple_api/config/settings.py) properly :**
 ```python
 SECRET_KEY = "SECRET_KEY"
 DEBUG = True
@@ -116,6 +117,8 @@ dynamodb = boto3.resource(
 )
 table = dynamodb.Table("Devices")
 ```
+
+and we're good to go!
 
 ```bash
 python manage.py runserver
