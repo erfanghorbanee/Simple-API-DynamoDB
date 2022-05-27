@@ -51,6 +51,7 @@ now enter your credentials and you're good to go!
 AWS Access Key ID [None]: MYACCESSKEY
 AWS Secret Access Key [None]: MYSECRETKEY
 Default region name [None]: MYREGION
+Default output format [None]: json
 ```
 
 ###  Run dynamodb migrator :
@@ -73,6 +74,7 @@ As you might know, it's not secure to put important variables such as SECRET_KEY
 so instead in the Simple-API/simple_api/ directory create a .env file,\
 this will be where we put our variables and fetch it in settings.py using  Python Decouple
 
+example:
 ```
 SECRET_KEY='MYSECRETKEY'
 DEBUG=True
@@ -94,11 +96,16 @@ In this project, i used zappa to deploy on aws lambda. therefore i have a [zappa
 ```
 
 ### Run the development server :
-```bash
-python manage.py runserver
+This code is for production, so you have to make a few changes before running it on local server. \
+**NOTE: Make sure to configure [settings.py](https://github.com/erfanghorbanee/Simple-API-DynamoDB/blob/main/simple_api/config/settings.py) properly:** \
+```python
+SECRET_KEY = "SECRET_KEY"
+DEBUG = True
+STATIC_URL = '/static/'
+# STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"  # Comment this one on local server!
 ```
-**NOTE: Make sure to configure settings.py the way you see fit before running this command.** \
-**NOTE 2: Enter your own aws credentials in [devices/api/views.py](https://github.com/erfanghorbanee/Simple-API-DynamoDB/blob/main/simple_api/devices/api/views.py) to connect to your dynamodb :**
+
+**NOTE 2: Put your own aws credentials in [devices/api/views.py](https://github.com/erfanghorbanee/Simple-API-DynamoDB/blob/main/simple_api/devices/api/views.py) to connect to your dynamodb :**
 ```python
 # Get the service resource.
 dynamodb = boto3.resource(
@@ -108,6 +115,10 @@ dynamodb = boto3.resource(
     region_name="MYREGION",
 )
 table = dynamodb.Table("Devices")
+```
+
+```bash
+python manage.py runserver
 ```
 
 ### Run the tests :
