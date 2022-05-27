@@ -127,9 +127,7 @@ python manage.py test
 ```
 
 ## Final Result
-We have two api at the moment \
-one for creating an instance in dynamo db, \
-and another one for getting it.
+We have two api at the moment, one for creating an instance in dynamo db and another one for getting it.
 
 ### Request 1:
 ```
