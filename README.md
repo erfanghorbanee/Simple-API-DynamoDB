@@ -97,7 +97,7 @@ In this project, i used zappa to deploy on aws lambda. therefore i have a [zappa
 
 ### Run the development server :
 This code is for production, so you have to make a few changes before running it on local server. \
-**NOTE: Make sure to configure [settings.py](https://github.com/erfanghorbanee/Simple-API-DynamoDB/blob/main/simple_api/config/settings.py) properly:** \
+**NOTE: Make sure to configure [settings.py](https://github.com/erfanghorbanee/Simple-API-DynamoDB/blob/main/simple_api/config/settings.py) properly:**
 ```python
 SECRET_KEY = "SECRET_KEY"
 DEBUG = True
@@ -172,6 +172,7 @@ Example: GET https://api123.amazonaws.com/api/devices/id1
 
 **NOTE: YOU CAN CHECK YOUR TABLES AND SEE IF THE INSTANCES WERE CREATED SUCCECFULLY:**
 ```
+bash
 aws dynamodb scan --table-name Devices
 ```
 
