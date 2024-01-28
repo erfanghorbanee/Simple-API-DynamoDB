@@ -6,14 +6,14 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 A simple server-less Restful API on Django using the following tech stacks: Python - Django - AWS DynamoDB - S3 \
-Ready to deply on AWS Lambda using [Zappa](https://github.com/zappa/Zappa).
+Ready to deploy on AWS Lambda using [Zappa](https://github.com/zappa/Zappa).
 
 # Table of Contents
 * [How run the project?](#how-run-the-project)
 * [Final Result](#final-result)
 * [Frequently Asked Questions](#frequently-asked-questions)
 
-## How run the project?
+## How to run the project?
 
 
 ### Clone the repository :
@@ -41,7 +41,7 @@ cd simple_api/
 pip install -r requirements.txt
 ```
 
-### Configure your aws credentials :
+### Configure your AWS credentials :
 ```bash
 aws configure
 ```
@@ -55,8 +55,8 @@ Default output format [None]: json
 ```
 
 ###  Run dynamodb migrator :
-You can find it at Simple-API/simple_api/dynamodb_migrator.py directory inside the project.\
-this is similar to usual makemigrations command that we run all the time, it creates the table we want for this project.\
+You can find it in Simple-API/simple_api/dynamodb_migrator.py directory inside the project.\
+this is similar to the usual makemigrations command that we run all the time, it creates the table we want for this project.\
 feel free to change it the way you need.
 
 ```bash
@@ -72,7 +72,7 @@ aws dynamodb list-tables
 #### Local:
 As you might know, it's not secure to put important variables such as SECRET_KEY directly in the code,\
 so instead in the Simple-API/simple_api/ directory create a .env file,\
-this will be where we put our variables and fetch it in settings.py using  Python Decouple
+this will be where we put our variables and fetch them in settings.py using  Python Decouple
 
 example:
 ```
@@ -83,7 +83,7 @@ DEBUG=True
 to learn more, you can check this [article](https://dontrepeatyourself.org/post/how-to-use-python-decouple-with-django/).
 
 #### Production:
-In this project, i used zappa to deploy on aws lambda. therefore i have a [zappa_settings.json](https://github.com/erfanghorbanee/Simple-API-DynamoDB/blob/main/simple_api/zappa_settings.json) file and i'm gonna store my environment variables in it!
+In this project, I used Zappa to deploy on aws lambda. therefore I have a [zappa_settings.json](https://github.com/erfanghorbanee/Simple-API-DynamoDB/blob/main/simple_api/zappa_settings.json) file and I'm going to store my environment variables in it!
 
 ```json
 "environment_variables":{
@@ -96,9 +96,9 @@ In this project, i used zappa to deploy on aws lambda. therefore i have a [zappa
 ```
 
 ### Run the development server :
-This code is for production, so you have to make a few changes before running it on local server.
+This code is for production, so you have to make a few changes before running it on the local server.
 
-**NOTE: Make sure to configure [settings.py](https://github.com/erfanghorbanee/Simple-API-DynamoDB/blob/main/simple_api/config/settings.py) properly :**
+**NOTE: Make sure to configure [settings.py](https://github.com/erfanghorbanee/Simple-API-DynamoDB/blob/main/simple_api/config/settings.py) properly:**
 ```python
 SECRET_KEY = "SECRET_KEY"
 DEBUG = True
@@ -130,7 +130,7 @@ python manage.py test
 ```
 
 ## Final Result
-We have two api at the moment, one for creating an instance in dynamo db and another one for getting it.
+We have two APIs at the moment, one for creating an instance in dynamo db and another one for getting it.
 
 ### Request 1:
 ```
@@ -171,7 +171,7 @@ Example: GET https://api123.amazonaws.com/api/devices/id1
 ![image](https://user-images.githubusercontent.com/49264993/169471253-7629e908-a21d-4a01-8550-6507911b4642.png)
 
 
-**NOTE: YOU CAN CHECK YOUR TABLES AND SEE IF THE INSTANCES WERE CREATED SUCCECFULLY:**
+**NOTE: YOU CAN CHECK YOUR TABLES AND SEE IF THE INSTANCES WERE CREATED SUCCESSFULLY:**
 ```bash
 aws dynamodb scan --table-name Devices
 ```
@@ -179,13 +179,13 @@ aws dynamodb scan --table-name Devices
 
 ## Frequently Asked Questions
 ### Question 1
-Is there any advantage of using integer hash key over string hash key?
+Is there any advantage of using an integer hash key over a string hash key?
 ### Answer
 Serialized numbers are sent to Amazon DynamoDB as String types, which maximizes compatibility across languages and libraries, 
-so there shouldn't be any advantage of using an integer hash key over a string hash key.
+so there shouldn't be any advantage to using an integer hash key over a string hash key.
 
 ### Question 2
-How can i deploy this on AWS Lambda?
+How can I deploy this on AWS Lambda?
 ### Answer
 Use the following commands in order:
 ```
@@ -194,7 +194,7 @@ $ zappa init
 $ zappa deploy
 ```
 
-for more information, check out this links:
+for more information, check out these links:
 - [Django deploy - Zappa onto AWS Lambda + API Gateway](https://www.youtube.com/watch?v=WaiL4sbaj_o)
 - [Django | Configure AWS S3 for Static Storage](https://www.youtube.com/watch?v=-dqpL3aY5e4)
 - [Serverless Deployment of a Django Project with AWS Lambda, Zappa, S3 and PostgreSQL](https://www.youtube.com/watch?v=Gf0vpJQZeBI)
