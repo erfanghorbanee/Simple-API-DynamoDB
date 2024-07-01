@@ -3,14 +3,17 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from config.settings import (AWS_ACCESS_KEY_ID, AWS_REGION,
+                             AWS_SECRET_ACCESS_KEY)
+
 from .serializers import DeviceSerializer
 
 # Get the service resource.
 dynamodb = boto3.resource(
     "dynamodb",
-    aws_access_key_id="MYACCESSKEY",
-    aws_secret_access_key="MYSECRETKEY",
-    region_name="MYREGION",
+    aws_access_key_id=AWS_ACCESS_KEY_ID,
+    aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
+    region_name=AWS_REGION,
 )
 table = dynamodb.Table("Devices")
 
@@ -38,7 +41,11 @@ class DeviceDetailAPI(APIView):
     """
 
     def get(self, request, pk):
-        device = table.get_item(Key={"id": f"/devices/id{pk}",})
+        device = table.get_item(
+            Key={
+                "id": f"/devices/id{pk}",
+            }
+        )
 
         # Check if device exists.
         if "Item" in device:
