@@ -122,7 +122,12 @@ STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 AWS_STORAGE_BUCKET_NAME = os.getenv("AWS_STORAGE_BUCKET_NAME")
 AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
 AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
-AWS_REGION = os.getenv("AWS_REGION")
+
+try:
+    AWS_REGION = os.environ["AWS_REGION"]
+except KeyError:
+    AWS_REGION = "us-west-2"  # Replace "us-west-2" with your desired AWS region
+
 AWS_S3_CUSTOM_DOMAIN = os.getenv("AWS_S3_CUSTOM_DOMAIN")
 AWS_S3_USE_SSL = False
 
