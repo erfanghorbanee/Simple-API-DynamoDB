@@ -8,3 +8,4 @@ isort==5.13.2
 marshmallow==3.21.3
 zappa==0.59.0
 django-storages==1.14.3
+setuptools==70.1.1
