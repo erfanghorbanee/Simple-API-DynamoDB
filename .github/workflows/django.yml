@@ -26,4 +26,5 @@ jobs:
         pip install -r ./simple_api/requirements.txt
     - name: Run Tests
       run: |
-        python ./simple_api/manage.py test
+        cd simple_api
+        python manage.py test
